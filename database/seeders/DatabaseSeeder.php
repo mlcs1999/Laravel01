@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        User::factory(5)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         //     'slug'=>'test'
         // ]);
         $user = User::find(1);
-        $user1 = User::find(2);
+        // $user1 = User::find(2);
         $user2 = User::find(3);
         // $cat = User::find(4);
         // $post = Post::create([
@@ -47,16 +47,19 @@ class DatabaseSeeder extends Seeder
         $cat2 = Category::factory()->create();
 
         Post::factory(5)->create([
-            'user_id'=>$user->id,
-            'category_id'=>$cat1->id,
+            'user_id' => $user->id,
+            'category_id' => $cat1->id,
         ]);
 
         Post::factory(5)->create([
-            'user_id'=>$user2->id,
-            'category_id'=>$cat2->id,
+            'user_id' => $user2->id,
+            'category_id' => $cat2->id,
         ]);
 
 
+        $this->call([
+            PostSeeder::class
+        ]);
 
     }
 }
