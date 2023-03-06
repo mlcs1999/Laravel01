@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\API\PostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/user', [UserController::class, 'index']);
+// Route::get('/users', [UserController::class, 'index']);
+// Route::get('/users/{id}', [UserController::class, 'show']);
+// Route::get('/posts', [PostsController::class, 'index']);
+// Route::get('/posts/{id}', [PostsController::class, 'show']);
+
+Route::resource('posts', PostsController::class);
+Route::resource('users', UserController::class);
