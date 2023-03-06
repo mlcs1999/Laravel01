@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,8 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return $posts;
+        // return PostResource::collection($posts);
+        return new PostCollection($posts);
     }
 
     /**

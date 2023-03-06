@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\API\PostsController;
+use App\Http\Controllers\UserPostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/posts/{id}', [PostsController::class, 'show']);
 
 Route::resource('posts', PostsController::class);
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)->only('index');
+
+// Route::get('/users/{id}/posts', [UserPostController::class, 'index']);
+
+Route::resource('users.posts', UserPostController::class)->only('index');
